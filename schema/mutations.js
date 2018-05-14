@@ -48,22 +48,36 @@ const mutation = new GraphQLObjectType({
     addMovie: {
       type: MovieType,
       args: {
-        title: { type: GraphQLString },
+        id: { type: GraphQLID },
+        title: { type: GraphQLString, required: true },
+        genre: { type: GraphQLString, required: true },
         director: { type: GraphQLString },
         releaseDate: { type: GraphQLString },
         rating: { type: GraphQLString },
-        description: { type: GraphQLString }
+        description: { type: GraphQLString },
+        imgUrl: { type: GraphQLString }
       },
       resolve(
         parentValue,
-        { title, director, releaseDate, rating, description, uploadFile }
+        {
+          title,
+          director,
+          genre,
+          releaseDate,
+          rating,
+          description,
+          imgUrl,
+          uploadFile
+        }
       ) {
         return new Movie({
           title,
           director,
+          genre,
           releaseDate,
           rating,
           description,
+          imgUrl,
           uploadFile
         }).save();
       }

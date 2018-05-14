@@ -9,6 +9,7 @@ export default gql`
       releaseDate
       rating
       description
+      imgUrl
       actors {
         id
         firstName

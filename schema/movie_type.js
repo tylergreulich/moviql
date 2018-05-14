@@ -14,17 +14,19 @@ const MovieType = new GraphQLObjectType({
   name: 'MovieType',
   fields: () => ({
     id: { type: GraphQLID },
-    title: { type: GraphQLString },
+    title: { type: GraphQLString, required: true },
+    genre: { type: GraphQLString, required: true },
     director: { type: GraphQLString },
     releaseDate: { type: GraphQLString },
     rating: { type: GraphQLString },
-    description: { type: GraphQLString },
+    description: { type: GraphQLString, required: true },
     actors: {
       type: new GraphQLList(ActorType),
       resolve(parentValue) {
         return Movie.findActors(parentValue.id);
       }
-    }
+    },
+    imgUrl: { type: GraphQLString }
   })
 });
 

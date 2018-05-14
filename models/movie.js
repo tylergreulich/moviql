@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const MovieSchema = new Schema({
+  // _id: Schema.Types.ObjectId,
   title: { type: String },
+  genre: { type: String },
   director: { type: String },
   releaseDate: { type: String },
   rating: { type: String },
@@ -13,7 +15,8 @@ const MovieSchema = new Schema({
       ref: 'actor'
     }
   ],
-  likes: { type: Number, default: 0 }
+  likes: { type: Number, default: 0 },
+  imgUrl: { type: String }
 });
 
 MovieSchema.statics.addActor = function(id, firstName, lastName) {
@@ -43,4 +46,4 @@ MovieSchema.statics.findActors = function(id) {
     .then(movie => movie.actors);
 };
 
-mongoose.model('movie', MovieSchema);
+module.exports = mongoose.model('movie', MovieSchema);

@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
-import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { Link } from 'react-router-dom';
+import {
+  StyledTitle,
+  StyledImage,
+  StyledContainer,
+  H2Home
+} from './StyledComponents';
 import styled from 'styled-components';
 import queryMovies from '../queries/queryMovies';
-import Movie from './Movie';
+
+const StyledLink = styled(Link)`
+  :hover :nth-child(1) + div {
+    opacity: 1;
+    /* transition: all 0.4s ease-in;
+    transform: translateY(-5rem); */
+  }
+  height: 100%;
+`;
 
 class MovieList extends Component {
-  // onLike = (event, id) => {
-  //   event.preventDefault();
-  //   console.log(id);
-  // };
-
   renderMovies() {
     console.log(this.props);
     return this.props.data.movies.map(movie => {
       return (
-        <Link to={movie.id} key={movie.id}>
-          <li onClick={() => console.log(this.props)}>{movie.title}</li>
+        <StyledLink to={movie.id} key={movie.id}>
+          <StyledImage src={movie.imgUrl} alt="" />
+          {/* <StyledTitle>{movie.title}</StyledTitle> */}
           {/* <button onClick={event => this.onLike(movie.id)}>Like</button> */}
-        </Link>
+        </StyledLink>
       );
     });
   }
@@ -29,19 +38,11 @@ class MovieList extends Component {
       return <div>Loading...</div>;
     }
 
-    const StyledLink = styled(Link)`
-      padding: 1rem 4rem;
-      text-decoration: none;
-      border: none;
-      border-radius: 30px;
-      background-color: grey;
-      text-transform: uppercase;
-    `;
-
     return (
       <div>
-        <ul>{this.renderMovies()}</ul>
-        <StyledLink to="/create">Create a Movie</StyledLink>
+        <H2Home>New Releases</H2Home>
+        <StyledContainer>{this.renderMovies()}</StyledContainer>
+        {/* <StyledLink to="/create">Create a Movie</StyledLink> */}
       </div>
     );
   }
