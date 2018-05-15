@@ -3,16 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import ApolloClient from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
+import { HashRouter, Route } from 'react-router-dom';
 import MovieList from './components/MovieList';
 import MovieCreate from './components/MovieCreate';
-import { HashRouter, Route } from 'react-router-dom';
 import Movie from './components/Movie';
 import Navigation from './components/Navigation';
+import Login from './components/Login';
+
+// const cache = new InMemoryCache();
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql'
+  link: createHttpLink({ uri: 'http://localhost:4000/graphql' }),
+  cache: new InMemoryCache()
 });
 
 const Root = () => (
@@ -22,7 +28,8 @@ const Root = () => (
         <Navigation />
         <Route exact path="/" component={App} />
         <Route exact path="/" component={MovieList} />
-        <Route path="/create" component={MovieCreate} />
+        {/* <Route path="/create" component={MovieCreate} /> */}
+        <Route exact path="/login" component={Login} />
         <Route exact path="/:id" component={Movie} />
       </div>
     </HashRouter>

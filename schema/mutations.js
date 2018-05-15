@@ -9,12 +9,43 @@ const {
 const mongoose = require('mongoose');
 const Movie = mongoose.model('movie');
 const Actor = mongoose.model('actor');
+const User = mongoose.model('user');
 const MovieType = require('./movie_type');
 const ActorType = require('./actor_type');
+const UserType = require('./types/user_type');
+const AuthService = require('../services/auth');
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
+    signup: {
+      type: UserType,
+      args: {
+        email: { type: GraphQLString },
+        password: { type: GraphQLString }
+      },
+      resolve(parentValue, { email, password }, req) {
+        return AuthService.signup({ email, password, req });
+      }
+    },
+    logout: {
+      type: UserType,
+      resolve(parentValue, args, req) {
+        const { user } = req;
+        req.logout();
+        return user;
+      }
+    },
+    login: {
+      type: UserType,
+      args: {
+        email: { type: GraphQLString },
+        password: { type: GraphQLString }
+      },
+      resolve(parentValue, { email, password }, req) {
+        return AuthService.login({ email, password, req });
+      }
+    },
     addActor: {
       type: ActorType,
       args: {
@@ -54,7 +85,7 @@ const mutation = new GraphQLObjectType({
         director: { type: GraphQLString },
         releaseDate: { type: GraphQLString },
         rating: { type: GraphQLString },
-        description: { type: GraphQLString },
+        description: { type: GraphQLString, required: true },
         imgUrl: { type: GraphQLString }
       },
       resolve(

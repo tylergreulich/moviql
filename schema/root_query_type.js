@@ -9,8 +9,10 @@ const {
 } = graphql;
 const MovieType = require('./movie_type');
 const ActorType = require('./actor_type');
+const UserType = require('./types/user_type');
 const Actor = mongoose.model('actor');
 const Movie = mongoose.model('movie');
+const User = mongoose.model('user');
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -34,6 +36,12 @@ const RootQuery = new GraphQLObjectType({
       args: { id: { type: new GraphQLNonNull(GraphQLID) } },
       resolve(parentValue, { id }) {
         return Actor.findById(id);
+      }
+    },
+    user: {
+      type: UserType,
+      resolve(parentValue, args, req) {
+        return req.user;
       }
     }
   })

@@ -17,6 +17,15 @@ const BackButton = styled(Link)`
   cursor: pointer;
 `;
 
+const StyledLink = styled(Link)`
+  padding: 1rem 4rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 30px;
+  background-color: grey;
+  text-transform: uppercase;
+`;
+
 class Movie extends Component {
   renderMovies() {
     return this.props.data.movies.map(movie => {
@@ -67,18 +76,10 @@ class Movie extends Component {
   }
 
   render() {
+    console.log(this.props.data);
     if (this.props.data.loading) {
       return <div>Loading...</div>;
     }
-
-    const StyledLink = styled(Link)`
-      padding: 1rem 4rem;
-      text-decoration: none;
-      border: none;
-      border-radius: 30px;
-      background-color: grey;
-      text-transform: uppercase;
-    `;
 
     return (
       <div>

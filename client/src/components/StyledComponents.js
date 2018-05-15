@@ -68,7 +68,7 @@ export const H2Home = styled.h2`
   }
 `;
 
-export const Navigation = styled.nav`
+export const NavBar = styled.nav`
   background-color: #303030;
   position: absolute;
   top: 0;
