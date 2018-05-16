@@ -4,28 +4,33 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { ApolloClient } from 'apollo-client';
-import { createHttpLink } from 'apollo-link-http';
+import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
 import { HashRouter, Route } from 'react-router-dom';
 import MovieList from './components/MovieList';
 import MovieCreate from './components/MovieCreate';
 import Movie from './components/Movie';
-import Navigation from './components/Navigation';
+// import Navigation from './components/Navigation';
 import Login from './components/Login';
 
-// const cache = new InMemoryCache();
+const httpLink = new HttpLink({
+  uri: 'http://localhost:4000/graphql'
+});
 
 const client = new ApolloClient({
-  link: createHttpLink({ uri: 'http://localhost:4000/graphql' }),
-  cache: new InMemoryCache()
+  link: httpLink,
+  credentials: 'include',
+  cache: new InMemoryCache({
+    dataIdFromObject: object => object.key || null
+  })
 });
 
 const Root = () => (
   <ApolloProvider client={client}>
     <HashRouter>
       <div>
-        <Navigation />
+        {/* <Navigation /> */}
         <Route exact path="/" component={App} />
         <Route exact path="/" component={MovieList} />
         {/* <Route path="/create" component={MovieCreate} /> */}

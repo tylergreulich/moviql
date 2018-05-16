@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { NavBar } from './StyledComponents';
 import { HashRouter, Link } from 'react-router-dom';
-import { graphql } from 'react-apollo';
 import currentUser from '../queries/currentUser';
+import { graphql } from 'react-apollo';
 
 class Navigation extends Component {
   render() {
-    console.log(this.props);
+    console.log(this.props.data);
     return (
       <div>
         <NavBar>
