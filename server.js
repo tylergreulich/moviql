@@ -1,13 +1,17 @@
 const express = require('express');
 const models = require('./models');
+const schema = require('./schema/schema');
 const bodyParser = require('body-parser');
 const expressGraphQL = require('express-graphql');
+
 const mongoose = require('mongoose');
+
 const session = require('express-session');
+
 const passport = require('passport');
+
 const passportConfig = require('./services/auth');
 const MongoStore = require('connect-mongo')(session);
-const schema = require('./schema/schema');
 
 const port = 4000;
 const cors = require('cors');
@@ -35,13 +39,13 @@ const corsOptions = {
 
 app.use(cors(corsOptions)); // not having cors enabled will cause an access control error
 
-app.use(bodyParser.json());
+// app.use();
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(
   session({
     resave: true,
-    saveUninitialized: true,
+    saveUninitialized: false,
     secret: 'aaabbbccc',
     store: new MongoStore({
       url: MONGO_URI,
@@ -55,6 +59,7 @@ app.use(passport.session());
 
 app.use(
   '/graphql',
+  bodyParser.json(),
   expressGraphQL({
     schema,
     graphiql: true

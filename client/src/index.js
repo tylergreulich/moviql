@@ -4,37 +4,39 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
+import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
 import { HashRouter, Route } from 'react-router-dom';
 import MovieList from './components/MovieList';
-import MovieCreate from './components/MovieCreate';
 import Movie from './components/Movie';
-// import Navigation from './components/Navigation';
+import Navigation from './components/Navigation';
 import Login from './components/Login';
+import Signup from './components/Signup';
 
-const httpLink = new HttpLink({
-  uri: '/graphql'
-});
+// const httpLink = new HttpLink({
+// uri: 'http://localhost:4000/graphql'
+// });
 
 const client = new ApolloClient({
-  link: httpLink,
-  // credentials: 'same-origin',
-  cache: new InMemoryCache({
-    dataIdFromObject: object => object.key || null
-  })
+  link: createHttpLink({
+    uri: 'http://localhost:4000/graphql',
+    credentials: 'include'
+  }),
+  cache: new InMemoryCache()
+  // dataIdFromObject: object => object.id || null
 });
 
 const Root = () => (
   <ApolloProvider client={client}>
     <HashRouter>
       <div>
-        {/* <Navigation /> */}
+        <Navigation />
         <Route exact path="/" component={App} />
         <Route exact path="/" component={MovieList} />
         {/* <Route path="/create" component={MovieCreate} /> */}
         <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
         <Route exact path="/:id" component={Movie} />
       </div>
     </HashRouter>

@@ -18,15 +18,6 @@ const BackButton = styled(Link)`
   cursor: pointer;
 `;
 
-const StyledLink = styled(Link)`
-  padding: 1rem 4rem;
-  text-decoration: none;
-  border: none;
-  border-radius: 30px;
-  background-color: grey;
-  text-transform: uppercase;
-`;
-
 class Movie extends Component {
   renderMovies() {
     return this.props.data.movies.map(movie => {
@@ -39,7 +30,6 @@ class Movie extends Component {
           >
             <img
               src={movie.imgUrl}
-              alt="Broken Image"
               style={{ maxWidth: '259px', maxHeight: '384px' }}
             />
             <InfoContainer>
@@ -74,12 +64,7 @@ class Movie extends Component {
       return <div>Loading...</div>;
     }
 
-    return (
-      <div>
-        <StyledLink to="/">Home</StyledLink>
-        {this.renderMovies()}
-      </div>
-    );
+    return <div>{this.renderMovies()}</div>;
   }
 }
 

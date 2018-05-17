@@ -74,7 +74,7 @@ export const NavBar = styled.nav`
   top: 0;
   left: 0;
   width: 100%;
-  height: 2rem;
+  height: 3rem;
   display: flex;
 `;
 

@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { Link } from 'react-router-dom';
-import {
-  StyledTitle,
-  StyledImage,
-  StyledContainer,
-  H2Home
-} from './StyledComponents';
+import { StyledImage, StyledContainer } from './StyledComponents';
 import styled from 'styled-components';
 import queryMovies from '../queries/queryMovies';
 
@@ -40,9 +35,7 @@ class MovieList extends Component {
 
     return (
       <div>
-        <H2Home>New Releases</H2Home>
         <StyledContainer>{this.renderMovies()}</StyledContainer>
-        {/* <StyledLink to="/create">Create a Movie</StyledLink> */}
       </div>
     );
   }

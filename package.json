@@ -1,12 +1,13 @@
 {
   "name": "moviql",
   "version": "1.0.0",
-  "description": "A Netflix clone built with React, Node, MongoDB, GraphQL and Apollo",
+  "description":
+    "A Netflix clone built with React, Node, MongoDB, GraphQL and Apollo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js",
-    "json:server": "json-server --watch db.json"
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"cd client && npm run start\""
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +24,7 @@
     "babel-preset-react": "^6.24.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
+    "concurrently": "^3.5.1",
     "connect-mongo": "^2.0.1",
     "cors": "^2.8.4",
     "express": "^4.16.3",
