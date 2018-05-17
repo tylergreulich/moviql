@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import queryMovies from '../queries/queryMovies';
 import { InfoContainer, InfoTitle } from './StyledComponents';
+import MovieDetails from './MovieDetails';
 
 const BackButton = styled(Link)`
   padding: 1.2rem 4rem;
@@ -54,18 +55,10 @@ class Movie extends Component {
                   })
                   .join(', ')}
               </figure>
-              <figure>
-                <div>{movie.director}</div>
-              </figure>
-              <figure>
-                <div>{movie.releaseDate}</div>
-              </figure>
-              <figure>
-                <div>{movie.rating}</div>
-              </figure>
-              <figure>
-                <div>{movie.description}</div>
-              </figure>
+              <MovieDetails>{movie.director}</MovieDetails>
+              <MovieDetails>{movie.releaseDate}</MovieDetails>
+              <MovieDetails>{movie.rating}</MovieDetails>
+              <MovieDetails>{movie.description}</MovieDetails>
               <BackButton to="/">
                 <span>Back</span>
               </BackButton>

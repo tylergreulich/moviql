@@ -10,10 +10,10 @@ const mongoose = require('mongoose');
 const Movie = mongoose.model('movie');
 const Actor = mongoose.model('actor');
 const User = mongoose.model('user');
-const MovieType = require('./movie_type');
-const ActorType = require('./actor_type');
-const UserType = require('./types/user_type');
-const AuthService = require('../services/auth');
+const MovieType = require('../types/movie_type');
+const ActorType = require('../types/actor_type');
+const UserType = require('../types/user_type');
+const AuthService = require('../../services/auth');
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',

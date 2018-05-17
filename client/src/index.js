@@ -15,12 +15,12 @@ import Movie from './components/Movie';
 import Login from './components/Login';
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/graphql'
+  uri: '/graphql'
 });
 
 const client = new ApolloClient({
   link: httpLink,
-  credentials: 'include',
+  // credentials: 'same-origin',
   cache: new InMemoryCache({
     dataIdFromObject: object => object.key || null
   })

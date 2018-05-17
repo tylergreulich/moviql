@@ -9,7 +9,7 @@ const {
 } = graphql;
 const MovieType = require('./movie_type');
 const ActorType = require('./actor_type');
-const UserType = require('./types/user_type');
+const UserType = require('./user_type');
 const Actor = mongoose.model('actor');
 const Movie = mongoose.model('movie');
 const User = mongoose.model('user');
