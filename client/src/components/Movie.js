@@ -61,7 +61,7 @@ class Movie extends Component {
   render() {
     console.log(this.props.data);
     if (this.props.data.loading) {
-      return <div>Loading...</div>;
+      return <div style={{ visibility: 'hidden' }} />;
     }
 
     return <div>{this.renderMovies()}</div>;

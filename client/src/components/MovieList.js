@@ -21,7 +21,6 @@ class MovieList extends Component {
       return (
         <StyledLink to={movie.id} key={movie.id}>
           <StyledImage src={movie.imgUrl} alt="" />
-          {/* <StyledTitle>{movie.title}</StyledTitle> */}
           {/* <button onClick={event => this.onLike(movie.id)}>Like</button> */}
         </StyledLink>
       );

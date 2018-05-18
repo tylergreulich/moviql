@@ -13,6 +13,12 @@ class AuthForm extends Component {
   };
 
   render() {
+    const errorMessage = {
+      color: 'red',
+      fontSize: '15px',
+      fontWeight: 'bold'
+    };
+
     return (
       <div className="row">
         <form className="col s4" onSubmit={this.onSubmit}>
@@ -21,7 +27,6 @@ class AuthForm extends Component {
               type="email"
               value={this.state.email}
               placeholder="Email"
-              required
               onChange={event => this.setState({ email: event.target.value })}
             />
           </div>
@@ -30,12 +35,16 @@ class AuthForm extends Component {
               type="password"
               value={this.state.password}
               placeholder="Password"
-              required
               onChange={event =>
                 this.setState({ password: event.target.value })
               }
             />
           </div>
+
+          <div style={errorMessage}>
+            {this.props.errors.map(error => <div key={error}>{error}</div>)}
+          </div>
+
           <button className="btn">Submit</button>
         </form>
       </div>
