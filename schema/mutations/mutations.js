@@ -86,7 +86,8 @@ const mutation = new GraphQLObjectType({
         releaseDate: { type: GraphQLString },
         rating: { type: GraphQLString },
         description: { type: GraphQLString, required: true },
-        imgUrl: { type: GraphQLString }
+        imgUrl: { type: GraphQLString },
+        headerImg: { type: GraphQLString }
       },
       resolve(
         parentValue,
@@ -98,6 +99,7 @@ const mutation = new GraphQLObjectType({
           rating,
           description,
           imgUrl,
+          headerImg,
           uploadFile
         }
       ) {
@@ -109,6 +111,47 @@ const mutation = new GraphQLObjectType({
           rating,
           description,
           imgUrl,
+          headerImg,
+          uploadFile
+        }).save();
+      }
+    },
+    editMovie: {
+      type: MovieType,
+      args: {
+        id: { type: GraphQLID },
+        title: { type: GraphQLString },
+        genre: { type: GraphQLString },
+        director: { type: GraphQLString },
+        releaseDate: { type: GraphQLString },
+        rating: { type: GraphQLString },
+        description: { type: GraphQLString },
+        imgUrl: { type: GraphQLString },
+        headerImg: { type: GraphQLString }
+      },
+      resolve(
+        parentValue,
+        {
+          title,
+          director,
+          genre,
+          releaseDate,
+          rating,
+          description,
+          imgUrl,
+          headerImg,
+          uploadFile
+        }
+      ) {
+        return new Movie({
+          title,
+          director,
+          genre,
+          releaseDate,
+          rating,
+          description,
+          imgUrl,
+          headerImg,
           uploadFile
         }).save();
       }

@@ -26,7 +26,8 @@ const MovieType = new GraphQLObjectType({
         return Movie.findActors(parentValue.id);
       }
     },
-    imgUrl: { type: GraphQLString }
+    imgUrl: { type: GraphQLString },
+    headerImg: { type: GraphQLString }
   })
 });
 

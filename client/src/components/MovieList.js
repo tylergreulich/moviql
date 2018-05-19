@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { StyledImage, StyledContainer } from './StyledComponents';
 import styled from 'styled-components';
 import queryMovies from '../queries/queryMovies';
+import './MovieList.css';
 
 const StyledLink = styled(Link)`
   :hover :nth-child(1) + div {
@@ -19,17 +20,23 @@ class MovieList extends Component {
     console.log(this.props);
     return this.props.data.movies.map(movie => {
       return (
-        <StyledLink to={movie.id} key={movie.id}>
-          <StyledImage src={movie.imgUrl} alt="" />
-          {/* <button onClick={event => this.onLike(movie.id)}>Like</button> */}
-        </StyledLink>
+        <div>
+          <StyledLink to={movie.id} key={movie.id}>
+            <StyledImage
+              src={movie.imgUrl}
+              alt=""
+              style={{ width: '100%', height: '100%' }}
+            />
+            {/* <button onClick={event => this.onLike(movie.id)}>Like</button> */}
+          </StyledLink>
+        </div>
       );
     });
   }
 
   render() {
     if (this.props.data.loading) {
-      return <div>Loading...</div>;
+      return <div className="loader">Loading...</div>;
     }
 
     return (

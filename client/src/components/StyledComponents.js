@@ -13,35 +13,40 @@ export const StyledImage = styled.img`
   transform: translateY(0%);
 `;
 
-export const StyledContainer = styled.ul`
-  margin-top: 5rem;
-  display: flex;
-  justify-content: space-evenly;
-  height: 40vh;
+export const StyledContainer = styled.div`
+  display: grid;
+  grid-template: 1fr 1fr / repeat(5, 1fr);
+  width: 100%;
+  padding: 6rem;
+  grid-gap: 2rem;
 
   > img:hover {
     cursor: pointer;
   }
 
-  > :nth-child(1) > img {
-    height: 100%;
+  /* > :nth-child(1) > img {
+    height: 30%;
   }
 
   > :nth-child(2) > img {
-    height: 100%;
+    height: 30%;
   }
 
   > :nth-child(3) > img {
-    height: 100%;
+    height: 30%;
   }
 
   > :nth-child(4) > img {
-    height: 100%;
+    height: 30%;
   }
 
   > :nth-child(5) > img {
-    height: 100%;
+    height: 30%;
   }
+
+  > :nth-child(6) > img {
+    height: 30%;
+  } */
 `;
 
 export const StyledAnchor = styled.a`
@@ -83,12 +88,16 @@ export const InfoContainer = styled.section`
   justify-content: center;
   align-items: flex-start;
   padding: 2rem 0;
-  margin: 0 0 0 1.7rem;
+  margin: 0 0 0 2rem;
   flex-direction: column;
+
+  figure {
+    margin: 2rem 2rem;
+  }
 `;
 
 export const InfoTitle = styled.div`
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: bold;
   letter-spacing: 0.1rem;
   color: #fff;

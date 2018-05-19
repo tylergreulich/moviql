@@ -67,10 +67,11 @@ router.post('/', upload.single('moviePoster'), (req, res, next) => {
       console.log(result);
       res.status(201).json({
         message: 'Created product successfully',
-        createdMoviet: {
+        createdMovie: {
           _id: result._id,
           title: result.title,
           imgUrl: result.imgUrl,
+          headerImg: result.headerImg,
           request: {
             type: 'GET',
             url: 'http://localhost:4000/poster/' + result._id

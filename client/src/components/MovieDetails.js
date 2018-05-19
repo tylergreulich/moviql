@@ -5,7 +5,9 @@ const movieDetails = props => {
   return (
     <Aux>
       <figure>
-        <div>{props.children}</div>
+        <div style={{ fontSize: '1.1rem', color: '#eee', fontWeight: '300' }}>
+          {props.children}
+        </div>
       </figure>
     </Aux>
   );

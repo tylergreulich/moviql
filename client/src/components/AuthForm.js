@@ -15,8 +15,7 @@ class AuthForm extends Component {
   render() {
     const errorMessage = {
       color: 'red',
-      fontSize: '15px',
-      fontWeight: 'bold'
+      fontSize: '15px'
     };
 
     return (

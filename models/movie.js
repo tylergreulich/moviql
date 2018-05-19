@@ -16,7 +16,8 @@ const MovieSchema = new Schema({
     }
   ],
   likes: { type: Number, default: 0 },
-  imgUrl: { type: String }
+  imgUrl: { type: String },
+  headerImg: { type: String }
 });
 
 MovieSchema.statics.addActor = function(id, firstName, lastName) {

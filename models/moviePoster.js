@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const MoviePosterSchema = new Schema({
   _id: Schema.Types.ObjectId,
   title: { type: String },
-  moviePoster: { type: String }
+  moviePoster: { type: String },
+  headerImg: { type: String }
 });
 
 module.exports = mongoose.model('MovieImages', MoviePosterSchema);

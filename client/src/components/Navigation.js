@@ -44,7 +44,7 @@ class Navigation extends Component {
     console.log(this.props.data);
     return (
       <div>
-        <nav>
+        <nav style={{ padding: '0 1rem', backgroundColor: '#e50914' }}>
           <div className="nav-wrapper">
             <Link
               to="/"
