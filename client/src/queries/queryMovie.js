@@ -5,6 +5,7 @@ export default gql`
     movie(id: $id) {
       id
       title
+      likes
     }
   }
 `;

@@ -3,10 +3,6 @@ import styled from 'styled-components';
 export const StyledTitle = styled.div`
   font-size: 1.2rem;
   text-decoration: none;
-  /* opacity: 0; */
-  /* background: rgba(0, 0, 0, 0.7);
-  height: 20rem;
-  transform: translateY(0%); */
 `;
 
 export const StyledImage = styled.img`
@@ -23,30 +19,6 @@ export const StyledContainer = styled.div`
   > img:hover {
     cursor: pointer;
   }
-
-  /* > :nth-child(1) > img {
-    height: 30%;
-  }
-
-  > :nth-child(2) > img {
-    height: 30%;
-  }
-
-  > :nth-child(3) > img {
-    height: 30%;
-  }
-
-  > :nth-child(4) > img {
-    height: 30%;
-  }
-
-  > :nth-child(5) > img {
-    height: 30%;
-  }
-
-  > :nth-child(6) > img {
-    height: 30%;
-  } */
 `;
 
 export const StyledAnchor = styled.a`
@@ -92,7 +64,7 @@ export const InfoContainer = styled.section`
   flex-direction: column;
 
   figure {
-    margin: 2rem 2rem;
+    margin: 2rem 0;
   }
 `;
 

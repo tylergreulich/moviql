@@ -9,25 +9,25 @@ import './MovieList.css';
 const StyledLink = styled(Link)`
   :hover :nth-child(1) + div {
     opacity: 1;
-    /* transition: all 0.4s ease-in;
-    transform: translateY(-5rem); */
   }
   height: 100%;
 `;
 
 class MovieList extends Component {
+  onLike(id) {
+    console.log(id);
+  }
   renderMovies() {
-    console.log(this.props);
-    return this.props.data.movies.map(movie => {
+    return this.props.data.movies.map((movie, id) => {
       return (
-        <div>
-          <StyledLink to={movie.id} key={movie.id}>
+        <div key={movie.id}>
+          <StyledLink to={movie.id}>
             <StyledImage
               src={movie.imgUrl}
               alt=""
               style={{ width: '100%', height: '100%' }}
             />
-            {/* <button onClick={event => this.onLike(movie.id)}>Like</button> */}
+            <button onClick={event => this.onLike(id)}>Like</button>
           </StyledLink>
         </div>
       );

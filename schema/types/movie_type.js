@@ -27,7 +27,7 @@ const MovieType = new GraphQLObjectType({
       }
     },
     imgUrl: { type: GraphQLString },
-    headerImg: { type: GraphQLString }
+    likes: { type: GraphQLInt }
   })
 });
 

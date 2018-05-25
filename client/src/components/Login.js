@@ -3,7 +3,7 @@ import AuthForm from './AuthForm';
 import LoginMutation from '../mutations/login';
 import { graphql } from 'react-apollo';
 import currentUser from '../queries/currentUser';
-import { HashRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Login extends Component {
   state = {
@@ -12,7 +12,6 @@ class Login extends Component {
 
   UNSAFE_componentWillUpdate(nextProps) {
     if (!this.props.data.user && nextProps.data.user) {
-      console.log(this.props);
       this.props.history.push('/dashboard');
     }
   }
@@ -32,11 +31,11 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <h3>Login</h3>
+        <h3 style={{ color: 'white' }}>Login</h3>
         <AuthForm errors={this.state.errors} onSubmit={this.onSubmit} />
       </div>
     );
   }
 }
 
-export default graphql(currentUser)(graphql(LoginMutation)(Login));
+export default graphql(currentUser)(graphql(LoginMutation)(withRouter(Login)));

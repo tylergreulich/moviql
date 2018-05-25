@@ -16,17 +16,12 @@ import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
 import requireAuth from './components/requireAuth';
 
-// const httpLink = new HttpLink({
-// uri: 'http://localhost:4000/graphql'
-// });
-
 const client = new ApolloClient({
   link: createHttpLink({
     uri: 'http://localhost:4000/graphql',
     credentials: 'include'
   }),
   cache: new InMemoryCache()
-  // dataIdFromObject: object => object.id || null
 });
 
 const Root = () => (
@@ -36,7 +31,6 @@ const Root = () => (
         <Navigation />
         <Route exact path="/" component={App} />
         <Route exact path="/" component={MovieList} />
-        {/* <Route path="/create" component={MovieCreate} /> */}
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/dashboard" component={requireAuth(Dashboard)} />

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import currentUserQuery from '../queries/currentUser';
 import { graphql } from 'react-apollo';
-import { HashRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 export default WrappedComponent => {
   class RequireAuth extends Component {
@@ -16,5 +16,5 @@ export default WrappedComponent => {
     }
   }
 
-  return graphql(currentUserQuery)(RequireAuth);
+  return graphql(currentUserQuery)(withRouter(RequireAuth));
 };

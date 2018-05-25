@@ -3,7 +3,7 @@ import AuthForm from './AuthForm';
 import { graphql } from 'react-apollo';
 import SignupMutation from '../mutations/signup';
 import currentUser from '../queries/currentUser';
-import { HashRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Signup extends Component {
   state = {
@@ -31,12 +31,14 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Signup</h3>
+      <div style={{ marginLeft: '1rem' }}>
+        <h3 style={{ color: 'white' }}>Signup</h3>
         <AuthForm onSubmit={this.onSubmit} errors={this.state.errors} />
       </div>
     );
   }
 }
 
-export default graphql(currentUser)(graphql(SignupMutation)(Signup));
+export default graphql(currentUser)(
+  graphql(SignupMutation)(withRouter(Signup))
+);

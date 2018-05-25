@@ -10,6 +10,7 @@ export default gql`
       rating
       description
       imgUrl
+      likes
       actors {
         id
         firstName

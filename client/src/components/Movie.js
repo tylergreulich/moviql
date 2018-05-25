@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import queryMovies from '../queries/queryMovies';
 import { InfoContainer, InfoTitle } from './StyledComponents';
 import MovieDetails from './MovieDetails';
-import Aux from './hoc/Auxiliary';
+import Aux from '../hoc/Auxiliary';
+import currentUser from '../queries/currentUser';
 
 const BackButton = styled(Link)`
   padding: 1.2rem 4rem;
-  /* margin: 1.5rem 0; */
   text-transform: uppercase;
   text-decoration: none;
   color: white;
@@ -20,37 +21,62 @@ const BackButton = styled(Link)`
 `;
 
 class Movie extends Component {
-  renderMovies() {
-    return this.props.data.movies.map(movie => {
-      console.log(`[MovieProps]`, movie);
-      if (movie.id === this.props.match.params.id)
-        return (
-          <Aux>
-            <header>
-              <img src={movie.headerImg} alt="" />
-            </header>
-            <div
-              onClick={() => console.log(this.props)}
-              key={movie.id}
-              style={{ margin: '3.5rem 0 0 3rem', display: 'flex' }}
-            >
-              <img
-                src={movie.imgUrl}
-                style={{ maxWidth: '259px', maxHeight: '384px' }}
-              />
-              <InfoContainer>
-                <InfoTitle>
-                  <div>{movie.title}</div>
-                </InfoTitle>
-                <MovieDetails>{movie.description}</MovieDetails>
-                <BackButton to="/">
-                  <span>Back</span>
-                </BackButton>
-              </InfoContainer>
-            </div>
-          </Aux>
-        );
+  onLike(id, likes) {
+    this.props.mutate({
+      variables: { id },
+      optimiiticResponse: {
+        __typename: 'Mutation',
+        likeMovie: {
+          id,
+          __typename: 'MovieType',
+          likes: likes + 1
+        }
+      }
     });
+  }
+
+  renderMovies() {
+    return this.props.data.movies.map(
+      ({ movie, likes, id, headerImg, imgUrl, title, description }) => {
+        if (id === this.props.match.params.id)
+          return (
+            <Aux key={id}>
+              <header>
+                <img src={headerImg} alt="" />
+              </header>
+              <div
+                key={id}
+                style={{ margin: '3.5rem 0 0 3rem', display: 'flex' }}
+              >
+                <img
+                  src={imgUrl}
+                  alt=""
+                  style={{ maxWidth: '259px', maxHeight: '384px' }}
+                />
+                <InfoContainer>
+                  <InfoTitle>
+                    <div>{title}</div>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <i
+                        className="material-icons"
+                        onClick={() => this.onLike(id)}
+                        style={{ padding: '0 .5rem 0 0', cursor: 'pointer' }}
+                      >
+                        thumb_up
+                      </i>
+                      {likes}
+                    </div>
+                  </InfoTitle>
+                  <MovieDetails>{description}</MovieDetails>
+                  <BackButton to="/">
+                    <span>Back</span>
+                  </BackButton>
+                </InfoContainer>
+              </div>
+            </Aux>
+          );
+      }
+    );
   }
 
   render() {
@@ -63,4 +89,13 @@ class Movie extends Component {
   }
 }
 
-export default graphql(queryMovies)(Movie);
+const mutation = gql`
+  mutation addLike($id: ID) {
+    likeMovie(id: $id) {
+      id
+      likes
+    }
+  }
+`;
+
+export default graphql(mutation)(graphql(queryMovies)(Movie));
