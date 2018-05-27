@@ -15,13 +15,13 @@ const MongoStore = require('connect-mongo')(session);
 
 const port = 4000;
 const cors = require('cors');
-const keys = require('./keys');
+// const keys = require('./keys');
 
 const app = express();
 
 const posters = require('./routes/poster');
 
-const MONGO_URI = keys.mongoURI;
+const MONGO_URI = 'mongodb://tyler:tyler@ds119800.mlab.com:19800/moviql';
 if (!MONGO_URI) {
   throw new Error('You must provide a MongoLab URI');
 }
