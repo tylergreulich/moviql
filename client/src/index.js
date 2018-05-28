@@ -18,7 +18,8 @@ import requireAuth from './components/requireAuth';
 
 const client = new ApolloClient({
   link: createHttpLink({
-    uri: 'https://aqueous-earth-85479.herokuapp.com/graphql'
+    uri: 'https://frozen-beyond-38940.herokuapp.com/graphql',
+    credentials: 'include'
   }),
   cache: new InMemoryCache()
 });
