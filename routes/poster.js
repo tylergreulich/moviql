@@ -43,7 +43,7 @@ router.get('/', (req, res, next) => {
             _id: doc._id,
             request: {
               type: 'GET',
-              url: 'http://localhost:4000/poster/' + doc._id
+              url: 'https://frozen-beyond-38940.herokuapp.com/poster/' + doc._id
             }
           };
         })
@@ -74,7 +74,8 @@ router.post('/', upload.single('moviePoster'), (req, res, next) => {
           headerImg: result.headerImg,
           request: {
             type: 'GET',
-            url: 'http://localhost:4000/poster/' + result._id
+            url:
+              'https://frozen-beyond-38940.herokuapp.com/poster/' + result._id
           }
         }
       });
