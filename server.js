@@ -33,7 +33,8 @@ mongoose.connection
   .on('error', error => console.log('Error connecting to MongoLab:', error));
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin:
+    'http://5b0b4dc13672df4a0b208bd8.priceless-pasteur-b75ff6.netlify.com/#/',
   credentials: true // <-- REQUIRED backend setting
 };
 

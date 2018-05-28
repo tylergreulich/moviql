@@ -14,9 +14,6 @@ const StyledLink = styled(Link)`
 `;
 
 class MovieList extends Component {
-  onLike(id) {
-    console.log(id);
-  }
   renderMovies() {
     return this.props.data.movies.map((movie, id) => {
       return (
@@ -27,7 +24,6 @@ class MovieList extends Component {
               alt=""
               style={{ width: '100%', height: '100%' }}
             />
-            <button onClick={event => this.onLike(id)}>Like</button>
           </StyledLink>
         </div>
       );
