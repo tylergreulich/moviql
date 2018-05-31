@@ -33,7 +33,7 @@ mongoose.connection
   .on('error', error => console.log('Error connecting to MongoLab:', error));
 
 const corsOptions = {
-  origin: 'http://admiring-golick-7882c0.netlify.com',
+  origin: 'https://admiring-golick-7882c0.netlify.com',
   credentials: true // <-- REQUIRED backend setting
 };
 
@@ -72,6 +72,7 @@ app.use('/poster', posters);
 
 app.use((error, req, res, next) => {
   res.status(error.status || 500);
+
   res.json({
     error: {
       message: error.message
