@@ -12,7 +12,7 @@ class Login extends Component {
 
   UNSAFE_componentWillUpdate(nextProps) {
     if (!this.props.data.user && nextProps.data.user) {
-      this.props.history.push('/dashboard');
+      this.props.history.push(`/dashboard/${nextProps.data.user.id}`);
     }
   }
 
@@ -29,6 +29,7 @@ class Login extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <h3 style={{ color: 'white' }}>Login</h3>

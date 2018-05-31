@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class Dashboard extends Component {
   render() {
+    console.log(this.props.data);
     return (
       <div>
         <div style={{ color: '#eee', fontSize: '2rem', textAlign: 'center' }}>

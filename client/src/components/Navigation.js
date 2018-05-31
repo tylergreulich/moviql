@@ -41,6 +41,7 @@ class Navigation extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <nav style={{ padding: '0 1rem', backgroundColor: '#e50914' }}>

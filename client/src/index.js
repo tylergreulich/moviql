@@ -33,7 +33,11 @@ const Root = () => (
         <Route exact path="/" component={MovieList} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
-        <Route exact path="/dashboard" component={requireAuth(Dashboard)} />
+        <Route
+          exact
+          path="/dashboard/:userid"
+          component={requireAuth(Dashboard)}
+        />
         <Route exact path="/:id" component={Movie} />
       </div>
     </HashRouter>

@@ -39,7 +39,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions)); // not having cors enabled will cause an access control error
 
-// app.use();
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(
@@ -80,6 +79,6 @@ app.use((error, req, res, next) => {
   });
 });
 
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 4000);
 
 module.exports = app;

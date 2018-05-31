@@ -5,6 +5,7 @@ import { StyledImage, StyledContainer } from './StyledComponents';
 import styled from 'styled-components';
 import queryMovies from '../queries/queryMovies';
 import './MovieList.css';
+import axios from 'axios';
 
 const StyledLink = styled(Link)`
   :hover :nth-child(1) + div {
@@ -29,6 +30,8 @@ class MovieList extends Component {
       );
     });
   }
+
+  componentWillMount() {}
 
   render() {
     if (this.props.data.loading) {

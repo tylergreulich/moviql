@@ -27,6 +27,7 @@ class AuthForm extends Component {
               value={this.state.email}
               placeholder="Email"
               onChange={event => this.setState({ email: event.target.value })}
+              style={{ color: '#eee' }}
             />
           </div>
           <div className="input-field">
@@ -37,6 +38,7 @@ class AuthForm extends Component {
               onChange={event =>
                 this.setState({ password: event.target.value })
               }
+              style={{ color: '#eee' }}
             />
           </div>
 
