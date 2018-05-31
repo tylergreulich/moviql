@@ -31,7 +31,7 @@ class Login extends Component {
   render() {
     console.log(this.props);
     return (
-      <div>
+      <div style={{ marginLeft: '1rem' }}>
         <h3 style={{ color: 'white' }}>Login</h3>
         <AuthForm errors={this.state.errors} onSubmit={this.onSubmit} />
       </div>
