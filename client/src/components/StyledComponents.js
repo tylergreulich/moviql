@@ -13,7 +13,7 @@ export const StyledContainer = styled.div`
   display: grid;
   grid-template: 1fr 1fr / repeat(5, 1fr);
   width: 100%;
-  padding: 6rem;
+  padding: 0rem 6rem;
   grid-gap: 2rem;
 
   > img:hover {
